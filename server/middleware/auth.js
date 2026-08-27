@@ -18,7 +18,7 @@ export default defineEventHandler((event) => {
   const config = useRuntimeConfig()
 
   // 3. Vérification du token
-  if (!token || token !== config.apiSecretToken) {
+  if (!token || token !== userState) {
     throw createError({
       statusCode: 401,
       statusMessage: 'Accès refusé : Token d\'API invalide ou manquant.'
