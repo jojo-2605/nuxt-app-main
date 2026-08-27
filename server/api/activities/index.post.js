@@ -6,7 +6,7 @@ export default defineEventHandler(async(e) => {
 const body = await readBody(e)
 
 //validation minimal
-if(!body || body.title || !body.duration) {
+if(!body || !body.title || !body.duration) {
   throw createError ({
     statusCode: 400,
     statusMessage: 'Les champs title et duration sont requis'
@@ -14,7 +14,7 @@ if(!body || body.title || !body.duration) {
 }
 
 //2. insérer l'activité dans SQLite
-const rq = db.prepare('INSERT INOT activities (title, duration) VALUES (?, ?')
+const rq = db.prepare('INSERT INTO activities (title, duration) VALUES (?, ?)')
 const info = rq.run(body.title, body.duration)
 
 //3. renvoyer l'éléement créé avec son nouvel ID

@@ -22,8 +22,8 @@
 <template>
   <h1>Activité</h1>
   <form @submit.prevent="addActivitie">
-    <input type="text" placeholder="nom activité">
-    <input type="text" placeholder=" durée">
+    <input type="text" placeholder="nom activité" v-model="newActivitie.title">
+    <input type="text" placeholder=" durée" v-model="newActivitie.duration">
     <button>Ajouter</button>
   </form>
   <ul>
