@@ -3,12 +3,12 @@ export default defineEventHandler(async(e) => {
   
   try {
     const [result] = await db.query(
-      'INSERT INTO motos (marque, model, couleur) VALUES (?, ?, ?)', 
+      'INSERT INTO motos (marque, modele, couleur) VALUES (?, ?, ?)', 
       [body.marque, body.model, body.couleur]
     )
     return {
       id: result.insertId,
-      model: body.model,
+      modele: body.modele,
       marque: body.marque,
       couleur: body.couleur
     }
