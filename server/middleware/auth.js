@@ -1,3 +1,5 @@
+import { userState } from "../utils/state"
+
 // server/middleware/auth.js
 export default defineEventHandler((event) => {
   const url = getRequestURL(event)
@@ -21,7 +23,8 @@ export default defineEventHandler((event) => {
   if (!token || token !== userState) {
     throw createError({
       statusCode: 401,
-      statusMessage: 'Accès refusé : Token d\'API invalide ou manquant.'
+      statusMessage: 'Accès refusé : Token d\'API invalide ou manquant.',
+      tokenState: userState.token
     })
   }
 })
